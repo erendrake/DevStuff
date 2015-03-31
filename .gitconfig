@@ -1,0 +1,51 @@
+[user]
+	name = Chris Woerz
+	email = erendrake@gmail.com
+[color]
+	branch = auto
+	diff = auto
+	interactive = auto
+	status = auto
+	ui = auto
+[core]
+	editor = vim
+	autocrlf = true
+	excludesfile = C:\\Users\\cwoerz\\Documents\\gitignore_global.txt
+[push]
+	default = current
+[diff]
+	tool = TortoiseMerge
+[difftool "TortoiseMerge"]
+	path = C:\\Program Files\\TortoiseGit\\bin\\TortoiseGitMerge.exe
+[merge]
+	tool = TortoiseMerge
+[mergetool "TortoiseMerge"]
+	path = C:\\Program Files\\TortoiseGit\\bin\\TortoiseGitMerge.exe
+[help]
+	autocorrect = 1
+[alias]
+	co = checkout
+	sf = submodule foreach
+	st = status
+        ci = commit
+	br = branch
+	df = diff
+	lg = log -p
+        cam = commit -am
+	siu = !git submodule update --init --recursive
+	pullup = !sh -c 'git pull $1 $2 && git siu' -
+	checkup = !sh -c 'git checkout $1 && git siu && install packages' -
+	fetchup = !sh -c 'git fetch $1 --prune --all  && git sf git fetch $1 --prune' -
+	rh = reset --hard
+	k = !gitk --all --select-commit=HEAD &
+	cam = commit -am
+	cup = commit --amend -am
+	mp = !sh -c 'git checkout master && git pull' -
+	cffxd = clean -ff -x -d
+	bleach = !git rh && git cffxd
+	fuckit = !git bleach && git sf git bleach && git siu
+        bushwhack = !sh -c 'git pull $1 $2 && git siu' -
+        cleanup = "!git branch --merged | grep  -v '\\*\\|master\\|develop' | xargs -n 1 git branch -d"
+        pruneremote = "!git branch -r --merged | grep -v '\\*\\|master\\|develop' | sed 's/origin\\///' | xargs -n 1 git push --delete erendrake"
+[difftool "sourcetree"]
+	cmd = 'C:/Program Files/TortoiseGit/bin/TortoiseGitMerge.exe' \"$LOCAL\" \"$REMOTE\"
